@@ -4,13 +4,10 @@ import "./globals.css";
 import Image from "next/image";
 import githublogo from "../public/icons/github-logo.png" 
 import Link from "next/link";
+import NoiseCanvas from "@/components/NoiseCanvas";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "Kernel0verflow - Personal Site",
-  description: "This is my personal site and blog",
-};
 
 const header = (
   <header>
@@ -31,15 +28,22 @@ const footer = (
   </footer>
 );
 
+export const metadata: Metadata = {
+  title: "Kernel0verflow - Personal Site",
+  description: "This is my personal site and blog",
+};
+
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
       <body className={`${inter.className} bg-slate-800 min-h-screen`}>
+        <NoiseCanvas />
           <div className="mx-auto max-w-6xl">
             {header}
             {children}
