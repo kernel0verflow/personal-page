@@ -5,6 +5,7 @@ import Image from "next/image";
 import githublogo from "../public/icons/github-logo.png" 
 import Link from "next/link";
 import NoiseCanvas from "@/components/NoiseCanvas";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -43,12 +44,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-slate-800 min-h-screen`}>
-        <NoiseCanvas />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NoiseCanvas />
           <div className="mx-auto max-w-6xl">
             {header}
             {children}
             {footer}
           </div>
+        </ThemeProvider>
       </body>
     </html>
   );
